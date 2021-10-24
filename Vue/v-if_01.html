@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p v-if="seen">this is v-if. seen is true</p>
+      <p v-else-if="data">this is v-else-if. seen is false and data is true</p>
+      <p v-else>this is v-else. seen and data is false</p>
+    </div>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          seen: true,
+          data: false,
+        },
+      });
+    </script>
+  </body>
+</html>

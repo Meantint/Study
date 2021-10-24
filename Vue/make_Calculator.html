@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h2>변수의 연산</h2>
+      <div>
+        <span>operand1 = </span>
+        <input type="text" v-model="operand1" />
+      </div>
+
+      <div>
+        <span>operand2 = </span>
+        <input type="text" v-model="operand2" />
+      </div>
+      <button v-on:click="onClickPlus">+</button>
+      <button v-on:click="onClickMinus">-</button>
+      <button v-on:click="onClickMultiple">*</button>
+      <button v-on:click="onClickDivide">/</button>
+      <button v-on:click="onClickQuotient">//</button>
+      <button v-on:click="onClickRemainder">%</button>
+
+      <h2>연산 결과 값</h2>
+      <div v-if="isEmpty()">Empty!</div>
+      <div v-else>
+        {{ operand1 }} {{ operator }} {{ operand2 }} = {{ result }}
+      </div>
+    </div>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          operand1: "",
+          operand2: "",
+          operator: "",
+          result: "",
+        },
+        methods: {
+          isEmpty() {
+            if (
+              this.operand1 === "" ||
+              this.operator === "" ||
+              this.operand2 === "" ||
+              this.result === ""
+            ) {
+              return true;
+            } else {
+              return false;
+            }
+          },
+          onClickPlus() {
+            this.operator = "+";
+            this.result = parseInt(this.operand1) + parseInt(this.operand2);
+          },
+          onClickMinus() {
+            this.operator = "-";
+            this.result = parseInt(this.operand1) - parseInt(this.operand2);
+          },
+          onClickMultiple() {
+            this.operator = "*";
+            this.result = parseInt(this.operand1) * parseInt(this.operand2);
+          },
+          onClickDivide() {
+            this.operator = "/";
+            this.result = parseInt(this.operand1) / parseInt(this.operand2);
+          },
+          onClickQuotient() {
+            this.operator = "//";
+            this.result = parseInt(
+              parseInt(this.operand1) / parseInt(this.operand2)
+            );
+          },
+          onClickRemainder() {
+            this.operator = "%";
+            this.result = parseInt(this.operand1) % parseInt(this.operand2);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div v-if="seen1">
+        <div>this is seen1</div>
+        <div>only seen1 is true</div>
+      </div>
+      <div v-else-if="seen2">
+        <div>this is seen2</div>
+        <div>only seen2 is true</div>
+      </div>
+      <div v-else-if="seen3">
+        <div>this is seen3</div>
+        <div>only seen3 is true</div>
+      </div>
+
+      <button v-on:click="changeSeen">changeSeen</button>
+    </div>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          seen1: true,
+          seen2: false,
+          seen3: false,
+        },
+        methods: {
+          changeSeen() {
+            if (this.seen1 === true) {
+              this.seen1 = false;
+              this.seen2 = true;
+            } else if (this.seen2 === true) {
+              this.seen2 = false;
+              this.seen3 = true;
+            } else if (this.seen3 === true) {
+              this.seen3 = false;
+              this.seen1 = true;
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
